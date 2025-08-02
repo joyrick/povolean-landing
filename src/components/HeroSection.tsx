@@ -85,10 +85,14 @@ const HeroSection = () => {
          </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-center">
-          <Button className="bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]">
+          <Button 
+            className="bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
+            onClick={() => window.open('https://povolean.vercel.app', '_blank')}
+          >
             Začnime
           </Button>
-          <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]">
+          <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
+          onClick={() => window.open('https://www.linkedin.com/company/povolean', '_blank')}>
             Kontakt
           </Button>
         </div>
