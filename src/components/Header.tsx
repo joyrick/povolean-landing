@@ -25,10 +25,14 @@ const Header = () => {
   
   const handleNavClick = (page: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    setActivePage(page);
-    const element = document.getElementById(page);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (page === 'dashboard') {
+      window.open('https://povolean.vercel.app', '_blank');
+    } else {
+      setActivePage(page);
+      const element = document.getElementById(page);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setMobileMenuOpen(false);
   };
