@@ -28,28 +28,35 @@ const Header = () => {
   
   const handleNavClick = (page: string) => (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
+    
     if (page === 'dashboard') {
       window.open('https://povolean.vercel.app', '_blank');
-    } else if (page === 'about') {
+      return;
+    } 
+    
+    if (page === 'about') {
       navigate('/o-nas');
-    } else {
-      // If we're not on the home page, navigate home first
-      if (location.pathname !== '/') {
-        navigate('/');
-        // Wait for navigation then scroll
-        setTimeout(() => {
-          const element = document.getElementById(page);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      } else {
-        // We're on home page, just scroll
-        setActivePage(page);
+      setMobileMenuOpen(false);
+      return;
+    }
+    
+    // For other pages (features, pricing), handle scrolling
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation then scroll
+      setTimeout(() => {
         const element = document.getElementById(page);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
+      }, 100);
+    } else {
+      // We're on home page, just scroll
+      setActivePage(page);
+      const element = document.getElementById(page);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
     setMobileMenuOpen(false);
