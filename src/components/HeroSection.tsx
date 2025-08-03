@@ -12,9 +12,16 @@ const HeroSection = () => {
 
   const dynamicLines = [
     "...podať žiadosť o záväzné stanovisko",
+    "...efektívne generovať dokumentáciu podľa zákona",
     "...nahrať dokumentáciu k mojej stavbe",
     "...získať doložku k súladu o zmene stavby",
-    "...mať usporiadanú dokumentáciu k stavbe"
+    "...AI asistenta k normám a stavebnému zákonu",
+    "...mať bezpečne usporiadanú dokumentáciu",
+    "...plugin pre automatickú tvorbu sprievodných správ",
+    "...získať prehľad o stavebnom konaní",
+    "...automaticky generovať sprievodnú správu",
+    "...vypĺňať formuláre pre úrad jedným klikom",
+    "...prepojiť Revit, Archicad alebo Autocad s Povoleanom"
   ];
 
   useEffect(() => {

@@ -2,15 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Logo from './Logo';
-import { Menu, X, CircleDot, LayoutDashboard, DollarSign, Sun, Moon } from 'lucide-react';
+import { Menu, X, CircleDot, LayoutDashboard, DollarSign, Sun, Moon, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Switch } from '@/components/ui/switch';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [activePage, setActivePage] = useState('features');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
+  const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     // Apply the theme to the document when it changes
@@ -27,11 +30,26 @@ const Header = () => {
     e.preventDefault();
     if (page === 'dashboard') {
       window.open('https://povolean.vercel.app', '_blank');
+    } else if (page === 'about') {
+      navigate('/o-nas');
     } else {
-      setActivePage(page);
-      const element = document.getElementById(page);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      // If we're not on the home page, navigate home first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation then scroll
+        setTimeout(() => {
+          const element = document.getElementById(page);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // We're on home page, just scroll
+        setActivePage(page);
+        const element = document.getElementById(page);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
     setMobileMenuOpen(false);
@@ -73,7 +91,7 @@ const Header = () => {
                 )}
                 onClick={handleNavClick('features')}
               >
-                <CircleDot size={16} className="inline-block mr-1.5" /> Úvod
+                <CircleDot size={16} className="inline-block mr-1.5" /> Funkcie
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="dashboard" 
@@ -95,6 +113,16 @@ const Header = () => {
               >
                 <DollarSign size={16} className="inline-block mr-1.5" /> Cenník
               </ToggleGroupItem>
+              <ToggleGroupItem 
+                value="about" 
+                className={cn(
+                  "px-4 py-2 rounded-full transition-colors relative",
+                  location.pathname === '/o-nas' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                )}
+                onClick={handleNavClick('about')}
+              >
+                <Users size={16} className="inline-block mr-1.5" /> O nás
+              </ToggleGroupItem>
             </ToggleGroup>
           </div>
         </nav>
@@ -110,7 +138,7 @@ const Header = () => {
                 }`}
                 onClick={handleNavClick('features')}
               >
-                <CircleDot size={16} className="inline-block mr-1.5" /> Úvod
+                <CircleDot size={16} className="inline-block mr-1.5" /> Funkcie
               </a>
               <a 
                 href="#dashboard" 
@@ -129,6 +157,15 @@ const Header = () => {
                 onClick={handleNavClick('pricing')}
               >
                 <DollarSign size={16} className="inline-block mr-1.5" /> Cenník
+              </a>
+              <a 
+                href="/o-nas" 
+                className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                  location.pathname === '/o-nas' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                }`}
+                onClick={handleNavClick('about')}
+              >
+                <Users size={16} className="inline-block mr-1.5" /> O nás
               </a>
               
               {/* Add theme toggle for mobile */}

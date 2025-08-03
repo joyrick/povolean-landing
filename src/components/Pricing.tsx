@@ -21,7 +21,7 @@ const Pricing = () => {
       popular: false
     },
     {
-      name: "Professional",
+      name: "Profesionálny účet",
       price: "4,90€ / 10000 tokenov",
       period: "pay per use",
       description: "Ideal for growing businesses with higher transaction volumes",
@@ -39,19 +39,19 @@ const Pricing = () => {
       popular: true
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      description: "For large organizations with complex financial operations",
+      name: "Individuálny program",
+      price: "Individuálna cenová ponuka",
+      description: "Máte projekčnú/stavebnú firmu? Spolupracujte s nami na zlepšení stavebného sektoru.",
       features: [
-        "Unlimited transactions",
-        "Custom payment workflows",
-        "Advanced compliance tools",
-        "Dedicated infrastructure",
-        "White-label solutions",
-        "Dedicated account manager",
-        "24/7 premium support"
+        "Individuálna cenová ponuka",
+        "Spolupráca na vývoji produktov",
+        "Individálny prístup",
+        "Podpora pri integráciách rôznych typov",
+        "Individuálna podpora",
+        "Prednostný prístup k novým funkciám",
+        "Analytika a reporty na mieru"
       ],
-      buttonText: "Contact Sales",
+      buttonText: "Kontaktujte náš predajný tím",
       buttonVariant: "outline",
       popular: false
     }

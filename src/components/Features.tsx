@@ -91,12 +91,12 @@ const Features = () => {
                     }`}
                   />
                 </div>
-                <h3 className="text-xl font-medium tracking-tighter mb-3">{feature.title}</h3>
-                <p className="text-gray-700 dark:text-white">{feature.description}</p>
+                <h3 className="text-xl font-medium tracking-tighter mb-3 text-foreground">{feature.title}</h3>
+                <p className="text-foreground/80">{feature.description}</p>
               </CollapsibleTrigger>
               <CollapsibleContent className="px-6 pb-6 pt-2">
                 <div className="pt-3 border-t border-cosmic-light/10">
-                  <p className="text-gray-700 dark:text-white">{feature.expandedDescription}</p>
+                  <p className="text-foreground/80">{feature.expandedDescription}</p>
                   <div className="mt-4 flex justify-end">
                     <button className="text-cosmic-accent hover:text-cosmic-accent/80 text-sm font-medium">
                       Zistite viac →
