@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-// ...existing code...
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import TaskBoard from './TaskBoard';
 import { Loader } from 'lucide-react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentLine, setCurrentLine] = useState(0);
-  const [isPipelineVisible, setIsPipelineVisible] = useState(false);
-  const pipelineRef = useRef<HTMLDivElement>(null);
 
   const dynamicLines = [
     "...podať žiadosť o záväzné stanovisko",
@@ -38,22 +34,6 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [dynamicLines.length]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsPipelineVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (pipelineRef.current) {
-      observer.observe(pipelineRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
   return <section className="relative w-full py-12 md:py-20 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden min-h-screen">
       {/* Logo above heading */}
       <div className="mb-8 flex justify-center">
@@ -108,21 +88,7 @@ const HeroSection = () => {
           Demo na vyžiadanie • Pridajte sa k testovaniu MVP
         </div>
       </div>
-      
-      {/* Task Manager UI integrated in hero section with glassmorphic effect */}
-      <div 
-        ref={pipelineRef}
-        className={`w-full max-w-7xl mt-12 z-10 transition-all duration-1000 delay-500 ${isPipelineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-      >
-        <div className="cosmic-glow relative rounded-xl overflow-hidden border border-border backdrop-blur-sm bg-card shadow-lg flex items-center justify-center" style={{ height: 600 }}>
-          <img 
-            src="/UI_preview.png" 
-            alt="UI Preview" 
-            className="max-w-full max-h-full" 
-            style={{ borderRadius: 'inherit', display: 'block', margin: 'auto' }}
-          />
-        </div>
-      </div>
-    </section>;
+    </section>
 };
+
 export default HeroSection;
