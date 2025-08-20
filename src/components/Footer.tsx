@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from './Logo';
 
@@ -44,7 +43,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Funkcie</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Pluginy a integrácie</a></li>
-              <li><a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Cenník</a></li>
+              <li><a href="#sluzby" className="text-muted-foreground hover:text-foreground transition-colors">Služby</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Aktualizuácie</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Naša roadmapa</a></li>
             </ul>

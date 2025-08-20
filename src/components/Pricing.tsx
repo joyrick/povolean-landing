@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 
-const Pricing = () => {
+const Sluzby = () => {
   const plans = [
     {
       name: "Skúšobná verzia - Demo",
@@ -58,11 +57,11 @@ const Pricing = () => {
   ];
   
   return (
-    <section id="pricing" className="w-full py-20 px-6 md:px-12 bg-background">
+    <section id="sluzby" className="w-full py-20 px-6 md:px-12 bg-background">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Plaťte iba za to, čo naozaj potrebujete
+            Služby
           </h2>
           <p className="text-muted-foreground text-lg">
             Volíme férový model pay per use, pretože sme flexibilný v inovovaní
@@ -133,4 +132,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default Sluzby;

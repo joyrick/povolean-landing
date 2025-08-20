@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Logo from './Logo';
@@ -111,14 +110,14 @@ const Header = () => {
                 <LayoutDashboard size={16} className="inline-block mr-1.5" /> Platforma
               </ToggleGroupItem>
               <ToggleGroupItem 
-                value="pricing" 
+                value="sluzby" 
                 className={cn(
                   "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'pricing' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'sluzby' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 )}
-                onClick={handleNavClick('pricing')}
+                onClick={handleNavClick('sluzby')}
               >
-                <DollarSign size={16} className="inline-block mr-1.5" /> Cenník
+                <DollarSign size={16} className="inline-block mr-1.5" /> Služby
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="about" 
@@ -139,7 +138,7 @@ const Header = () => {
           <div className="md:hidden absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-md py-4 px-6 border border-border rounded-2xl shadow-lg z-50">
             <div className="flex flex-col gap-4">
               <a 
-                href="#features" 
+                href="#" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
                   activePage === 'features' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
@@ -157,13 +156,13 @@ const Header = () => {
                 <LayoutDashboard size={16} className="inline-block mr-1.5" /> Platforma
               </a>
               <a 
-                href="#pricing" 
+                href="#sluzby" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'pricing' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'sluzby' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
-                onClick={handleNavClick('pricing')}
+                onClick={handleNavClick('sluzby')}
               >
-                <DollarSign size={16} className="inline-block mr-1.5" /> Cenník
+                <DollarSign size={16} className="inline-block mr-1.5" /> Služby
               </a>
               <a 
                 href="/o-nas" 

@@ -1,10 +1,9 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import Features from '@/components/Features';
 import Testimonials from '@/components/Testimonials';
-import Pricing from '@/components/Pricing';
+import Sluzby from '@/components/Pricing';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -13,9 +12,8 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <Features />
-        <Testimonials />
-        <Pricing />
+        
+        <Sluzby />
       </main>
       <Footer />
     </div>
