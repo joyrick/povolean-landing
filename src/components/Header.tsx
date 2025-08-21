@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Logo from './Logo';
-import { Menu, X, CircleDot, LayoutDashboard, DollarSign, Sun, Moon, Users } from 'lucide-react';
+import { Menu, X, CircleDot, Check, Phone, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Switch } from '@/components/ui/switch';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const [activePage, setActivePage] = useState('features');
+  const [activePage, setActivePage] = useState('domov');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
   const navigate = useNavigate();
@@ -40,12 +40,15 @@ const Header = () => {
       return;
     }
     
+    // Map logical page keys to section IDs when they differ
+    const targetId = page === 'sluzby' ? 'extrakcia' : page;
+
     // For other pages (features, pricing), handle scrolling
     if (location.pathname !== '/') {
       navigate('/');
       // Wait for navigation then scroll
       setTimeout(() => {
-        const element = document.getElementById(page);
+        const element = document.getElementById(targetId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -53,7 +56,7 @@ const Header = () => {
     } else {
       // We're on home page, just scroll
       setActivePage(page);
-      const element = document.getElementById(page);
+      const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
@@ -71,7 +74,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 pt-8 px-4">
-      <header className="w-full max-w-7xl mx-auto py-3 px-6 md:px-8 flex items-center justify-between bg-white/30 backdrop-blur-md border-b border-white/10 shadow rounded-2xl">
+      <header className="w-full max-w-7xl mx-auto py-3 px-6 md:px-8 flex items-center justify-between">
         <div className="p-3 flex items-center gap-3">
           <img src="/logo_povolean.png" alt="Povolean Logo" className="h-8 w-auto" />
           <span className="font-bold text-lg text-foreground">Povolean</span>
@@ -82,7 +85,7 @@ const Header = () => {
           className="md:hidden p-3 rounded-2xl text-muted-foreground hover:text-foreground"
           onClick={toggleMobileMenu}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={20} />}
         </button>
         
         {/* Desktop navigation */}
@@ -90,24 +93,14 @@ const Header = () => {
           <div className="rounded-full px-1 py-1 backdrop-blur-md bg-background/80 border border-border shadow-lg">
             <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)}>
               <ToggleGroupItem 
-                value="features"
+                value="domov"
                 className={cn(
                   "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'features' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'domov' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 )}
-                onClick={handleNavClick('features')}
+                onClick={handleNavClick('domov')}
               >
-                <CircleDot size={16} className="inline-block mr-1.5" /> Funkcie
-              </ToggleGroupItem>
-              <ToggleGroupItem 
-                value="dashboard" 
-                className={cn(
-                  "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'dashboard' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                )}
-                onClick={handleNavClick('dashboard')}
-              >
-                <LayoutDashboard size={16} className="inline-block mr-1.5" /> Platforma
+                <CircleDot size={16} className="inline-block mr-1.5" /> Domov
               </ToggleGroupItem>
               <ToggleGroupItem 
                 value="sluzby" 
@@ -117,79 +110,72 @@ const Header = () => {
                 )}
                 onClick={handleNavClick('sluzby')}
               >
-                <DollarSign size={16} className="inline-block mr-1.5" /> Služby
+                <Check size={16} className="inline-block mr-1.5" /> Služby
               </ToggleGroupItem>
-              <ToggleGroupItem 
-                value="about" 
+              <ToggleGroupItem
+                value="kontakt"
                 className={cn(
                   "px-4 py-2 rounded-full transition-colors relative",
-                  location.pathname === '/o-nas' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'kontakt' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 )}
-                onClick={handleNavClick('about')}
+                onClick={handleNavClick('kontakt')}
               >
-                <Users size={16} className="inline-block mr-1.5" /> O nás
+                <Phone size={16} className="inline-block mr-1.5" /> Kontakt
               </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
-        </nav>
+               {/* Removed Platforma and O nás items as requested */}
+             </ToggleGroup>
+           </div>
+         </nav>
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-md py-4 px-6 border border-border rounded-2xl shadow-lg z-50">
             <div className="flex flex-col gap-4">
               <a 
-                href="#" 
+                href="#domov" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'features' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'domov' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
-                onClick={handleNavClick('features')}
+                onClick={handleNavClick('domov')}
               >
-                <CircleDot size={16} className="inline-block mr-1.5" /> Funkcie
+                <CircleDot size={16} className="inline-block mr-1.5" /> Domov
               </a>
               <a 
-                href="#dashboard" 
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'dashboard' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
-                onClick={handleNavClick('dashboard')}
-              >
-                <LayoutDashboard size={16} className="inline-block mr-1.5" /> Platforma
-              </a>
-              <a 
-                href="#sluzby" 
+                href="#extrakcia" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
                   activePage === 'sluzby' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
                 onClick={handleNavClick('sluzby')}
               >
-                <DollarSign size={16} className="inline-block mr-1.5" /> Služby
+                <Check size={16} className="inline-block mr-1.5" /> Služby
               </a>
               <a 
-                href="/o-nas" 
+                href="#kontakt" 
                 className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  location.pathname === '/o-nas' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  activePage === 'kontakt' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
-                onClick={handleNavClick('about')}
+                onClick={handleNavClick('kontakt')}
               >
-                <Users size={16} className="inline-block mr-1.5" /> O nás
+                <Phone size={16} className="inline-block mr-1.5" /> Kontakt
               </a>
-              
-              {/* Add theme toggle for mobile */}
-              <div className="flex items-center justify-between px-3 py-2">
-                <span className="text-sm text-muted-foreground">Mód</span>
-                <div className="flex items-center gap-2">
-                  <Moon size={16} className={`${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
-                  <Switch 
-                    checked={!isDarkMode} 
-                    onCheckedChange={toggleTheme} 
-                    className="data-[state=checked]:bg-primary"
-                  />
-                  <Sun size={16} className={`${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+               {/* Platforma and O nás removed from mobile menu */}
+                
+                {/* Add theme toggle for mobile */}
+               <div className="flex items-center justify-between px-3 py-2">
+                 <span className="text-sm text-muted-foreground">Mód</span>
+                 <div className="flex items-center gap-2">
+                   <Moon size={16} className={`${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+                   <Switch 
+                     checked={!isDarkMode} 
+                     onCheckedChange={toggleTheme} 
+                     className="data-[state=checked]:bg-primary"
+                   />
+                   <Sun size={16} className={`${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+                 </div>
+               </div>
+             </div>
+           </div>
+         )}
         
         <div className="hidden md:flex items-center gap-4">
           {/* Theme toggle for desktop */}

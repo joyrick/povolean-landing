@@ -7,17 +7,11 @@ const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
 
   const dynamicLines = [
-    "...podať žiadosť o záväzné stanovisko",
-    "...efektívne generovať dokumentáciu podľa zákona",
-    "...nahrať dokumentáciu k mojej stavbe",
-    "...získať doložku k súladu o zmene stavby",
-    "...AI asistenta k normám a stavebnému zákonu",
-    "...mať bezpečne usporiadanú dokumentáciu",
-    "...plugin pre automatickú tvorbu sprievodných správ",
-    "...získať prehľad o stavebnom konaní",
-    "...automaticky generovať sprievodnú správu",
-    "...vypĺňať formuláre pre úrad jedným klikom",
-    "...prepojiť Revit, Archicad alebo Autocad s Povoleanom"
+    "...tvoríme AI riešenia na mieru",
+    "...optimalizujeme tvorbu dokumentácie podľa akejkoľvek štruktúry",
+    "...automaticky extrahujeme informácie a zabezpečujeme korešpondenciu v dátach",
+    "...pomáhame automaticky zlepšovať formulácie a štruktúry dokumentov",
+    "...pomáhame adaptácii na nové legislatívne zmeny",
   ];
 
   useEffect(() => {
@@ -34,15 +28,15 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [dynamicLines.length]);
 
-  return <section className="relative w-full py-12 md:py-20 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden min-h-screen">
-      {/* Logo above heading */}
+  return <section id="domov" className="relative w-full py-12 md:py-20 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden min-h-screen">
+      {/* Logo above heading
       <div className="mb-8 flex justify-center">
         <img src="/logo_povolean.png" alt="Povolean Logo" className="h-16 w-auto drop-shadow-lg" />
-      </div>
+      </div>  */}
       {/* Dynamic Text Effect - Main Heading */}
       <div className={`hero-dynamic-text transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <span className="hero-static">Potrebujem...&nbsp;</span>
-        <span className="hero-dynamic">
+        <span className="hero-static text-3xl md:text-4xl">Meníme stavebný sektor a <br /> šetríme čas jeho účastníkom...&nbsp;</span>
+        <span className="hero-dynamic text-sm md:text-base">
           {dynamicLines.map((line, index) => (
             <span 
               key={index}
@@ -59,25 +53,13 @@ const HeroSection = () => {
 
       {/* Secondary content below */}
       <div className={`relative z-10 max-w-4xl text-center space-y-6 transition-all duration-700 transform mt-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="flex justify-center">
-          <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-medium rounded-full bg-white/20 text-white backdrop-blur-md">
-            <span className="flex h-2 w-2 rounded-full bg-white"></span>
-            AI platforma pre celý stavebný sektor
-            <Loader className="h-3 w-3 animate-spin text-white" />
-          </span>
-        </div>
-        
+       
         <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto text-balance">
-        pomáhame všetkým účastníkom stavebného priemyslu šetriť čas a urýchľovať schvaľovacie procesy, ako aj adaptovať sa na nový stavebný zákon.
+        Najmodernejšie riešenia na mieru s platformou pre optimalizáciu schvaľovacích procesov a stavebných povolení.
          </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-center">
-          <Button 
-            className="bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
-            onClick={() => window.open('https://povolean.vercel.app', '_blank')}
-          >
-            Začnime
-          </Button>
+
           <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
           onClick={() => window.open('https://www.linkedin.com/company/povolean', '_blank')}>
             Kontakt
@@ -85,7 +67,7 @@ const HeroSection = () => {
         </div>
         
         <div className="pt-6 text-sm text-white/60">
-          Demo na vyžiadanie • Pridajte sa k testovaniu MVP
+          
         </div>
       </div>
     </section>

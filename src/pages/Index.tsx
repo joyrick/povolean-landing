@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import Features from '@/components/Features';
-import Testimonials from '@/components/Testimonials';
 import Sluzby from '@/components/Pricing';
+import ExtractionSection from '@/components/ExtractionSection';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -13,7 +13,9 @@ const Index = () => {
       <main>
         <HeroSection />
         
-        <Sluzby />
+   
+        <ExtractionSection />
+        <Contact />
       </main>
       <Footer />
     </div>

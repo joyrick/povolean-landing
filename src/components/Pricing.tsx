@@ -64,7 +64,7 @@ const Sluzby = () => {
             Služby
           </h2>
           <p className="text-muted-foreground text-lg">
-            Volíme férový model pay per use, pretože sme flexibilný v inovovaní
+            Volíme férový model pay per use, pretože sme flexibilní v inovovaní
           </p>
         </div>
         
