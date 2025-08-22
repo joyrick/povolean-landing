@@ -63,7 +63,7 @@ const HeroSection = () => {
 
           <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 hover:!text-black dark:hover:!text-white text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
           onClick={() => window.open('https://www.linkedin.com/company/povolean', '_blank')}>
-            Kontakt
+            LinkedIn
           </Button>
           <Button
             variant="default"
