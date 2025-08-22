@@ -12,6 +12,7 @@ const HeroSection = () => {
     "...automaticky extrahujeme informácie a zabezpečujeme korešpondenciu v dátach",
     "...pomáhame automaticky zlepšovať formulácie a štruktúry dokumentov",
     "...pomáhame adaptácii na nové legislatívne zmeny",
+    "...redukujeme čas minutý na byrokraciu",
   ];
 
   useEffect(() => {
@@ -60,9 +61,17 @@ const HeroSection = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-center">
 
-          <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
+          <Button variant="outline" className="border-white/30 bg-white text-black hover:bg-white/90 hover:!text-black dark:hover:!text-white text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
           onClick={() => window.open('https://www.linkedin.com/company/povolean', '_blank')}>
             Kontakt
+          </Button>
+          <Button
+            variant="default"
+            className="text-white bg-white/10 hover:bg-white/20 hover:!text-black dark:hover:!text-white text-base h-12 px-8 transition-all duration-200 min-h-[48px]"
+            onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+            aria-label="Zavolajte nám"
+          >
+            Zavolajte nám!
           </Button>
         </div>
         

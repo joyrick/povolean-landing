@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const ExtractionSection = () => (
-  <section id="extrakcia" className="w-full py-28 md:py-32 px-6 md:px-12 bg-white">
+  <section id="extrakcia" className="w-full py-28 md:py-32 px-6 md:px-12 bg-card transition-colors">
     <div className="max-w-8xl mx-auto space-y-16">
       {/* Section: Extrakcia formulárov */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -31,16 +31,12 @@ const ExtractionSection = () => (
             </div>
           </div>
 
-          <div className="mt-6">
-            <a href="#kontakt">
-              <Button variant="default">Viac informácií</Button>
-            </a>
-          </div>
+   
         </div>
 
         <div className="order-1 md:order-2 flex justify-center">
           <div className="w-full max-w-xl rounded-xl overflow-hidden border border-border shadow-sm bg-card" style={{ aspectRatio: '16/10' }}>
-            <img src="/UI_preview.png" alt="Extrakcia formulárov" className="w-full h-full object-cover" />
+            <img src="/UI2.png" alt="Extrakcia formulárov" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -49,7 +45,7 @@ const ExtractionSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="order-1 md:order-1 flex justify-center">
           <div className="w-full max-w-xl rounded-xl overflow-hidden border border-border shadow-sm bg-card" style={{ aspectRatio: '16/10' }}>
-            <img src="/placeholder.svg" alt="Generovanie dokumentácie" className="w-full h-full object-cover" />
+            <img src="/UI3.png" alt="Generovanie dokumentácie" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -78,7 +74,7 @@ const ExtractionSection = () => (
 
           <div className="mt-6">
             <a href="#kontakt">
-              <Button variant="default">Požiadať o demo</Button>
+              <Button variant="default" className="!text-white hover:!text-black dark:hover:!text-white">Požiadať o demo</Button>
             </a>
           </div>
         </div>
